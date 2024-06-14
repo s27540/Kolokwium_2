@@ -36,7 +36,7 @@ public class SubscriptionContext : DbContext
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-            entity.Property(e => e.TotalPaidAmount).IsRequired();
+            entity.Property(e => e.TotalPaidAmount).IsRequired().HasColumnType("decimal(18, 2)");
             entity.Property(e => e.RenewalPeriod).IsRequired();
             entity.Property(e => e.EndDate).IsRequired();
             entity.Property(e => e.CreatedAt).IsRequired();
@@ -50,7 +50,7 @@ public class SubscriptionContext : DbContext
         modelBuilder.Entity<Payment>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Amount).IsRequired();
+            entity.Property(e => e.Amount).IsRequired().HasColumnType("decimal(18, 2)");
             entity.Property(e => e.PaymentDate).IsRequired();
 
             entity.HasOne(p => p.Client)
@@ -66,7 +66,7 @@ public class SubscriptionContext : DbContext
         modelBuilder.Entity<Discount>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Value).IsRequired();
+            entity.Property(e => e.Value).IsRequired().HasColumnType("decimal(18, 2)");
             entity.Property(e => e.StartDate).IsRequired();
             entity.Property(e => e.EndDate).IsRequired();
 

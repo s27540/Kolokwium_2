@@ -15,6 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
